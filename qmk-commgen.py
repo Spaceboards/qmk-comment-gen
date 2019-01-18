@@ -25,5 +25,5 @@ for index in range(0,lines):
     if index>=0 and index<(lines-1) and lines>1:
         file.write(" * |"+(fill2*colm)+"------|"+nl)
 file.write(" * `------"+(fill*colm)+"'"+nl)
-file.write("*/")
+file.write(" */")
 file.close()

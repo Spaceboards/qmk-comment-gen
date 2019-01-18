@@ -417,7 +417,7 @@ def repl(kmap):
     kmap=kmap.replace("SH_TT,"," SH TgM,")
     #UNICODE NOT SUPPORTED
 
-    kmap=kmap.replace(" ,"," |")
+    kmap=kmap.replace(",","|")
     kmap=kmap.replace("*,","*|")
     kmap=kmap.replace("REPLACE,",",")
     return kmap
