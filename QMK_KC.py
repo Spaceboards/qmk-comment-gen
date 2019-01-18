@@ -288,7 +288,7 @@ def repl(kmap):
     kmap=kmap.replace("KC_MRWD,","  <<  ,")
     kmap=kmap.replace("KC_BRIGHTNESS_UP,"," Brt+ ,")
     kmap=kmap.replace("KC_BRIU,"," Brt+ ,")
-    kmap=kmap.replace("KC_BRIGHTNESS_DOWN,"," Brt- ,)
+    kmap=kmap.replace("KC_BRIGHTNESS_DOWN,"," Brt- ,")
     kmap=kmap.replace("KC_BRID,"," Brt- ,")
     #QUANTUM KEYCODES
     kmap=kmap.replace("RESET,"," Reset,")
