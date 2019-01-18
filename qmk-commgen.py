@@ -7,7 +7,8 @@ for num in range(1,(lines+1)):
     kmap=" *,"+kmap
     kmap=kmap.replace(" ","")
     colm=""
+    if kmap.endswith(",")==False:
+        kmap=kmap+","
     fixed=QMK_KC.repl(kmap)
     comb.append(fixed)
 print(comb)
-print (len(comb))
