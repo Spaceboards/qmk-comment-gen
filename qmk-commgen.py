@@ -1,19 +1,13 @@
-rows=int(input("ROWS? "))
-colm=int(input("COLM? "))
-odd="------"*(colm-1)
-odd2="-----+"*(colm-1)
-
-even="|     "*(colm-1)
-fh=open("comment.txt","w+")
-fh.write("/*"+"\n")
-fh.write(" * ,"+odd+"-----."+"\n")
-fh.write(" * "+even+"|     |"+"\n")
-rows=rows-1
-while rows>0:
-    fh.write(" * |"+odd2+"-----|"+"\n")
-    fh.write(" * "+even+"|     |"+"\n")
-    rows=rows-1
-fh.write(" * `"+odd+"-----'"+"\n")
-fh.write("*/")
-fh.close()
-print("Done!")
+import QMK_KC
+lines=input("How many lines? ")
+lines=int(lines)
+comb=[]
+for num in range(1,(lines+1)):
+    kmap=input("Line "+str(num)+"? ")
+    kmap=" *,"+kmap
+    kmap=kmap.replace(" ","")
+    colm=""
+    fixed=QMK_KC.repl(kmap)
+    comb.append(fixed)
+print(comb)
+print (len(comb))
