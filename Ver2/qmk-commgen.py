@@ -1,4 +1,6 @@
 import QMK_KC
+#lines=input("How many lines? ")
+#lines=int(lines)
 comb=[]
 fill="-------"
 fill2="------+"
@@ -6,6 +8,8 @@ counter=0
 yes=0
 ndnl=[]
 nl="\n"
+#for num in range(1,(lines+1)):
+#kmap=input("Line "+str(num)+"? ")
 inpt=open("keymap.c","r")
 allin=inpt.readlines()
 inpt.close()
@@ -13,8 +17,9 @@ for line in allin:
     counter+=1
     line=line.replace(" ","")
     line=line.replace("\n","")
-    if line.count(")")>=1:
+    if line.count(")")>=1 and yes>0:
         yes=0
+        break
     elif yes>0:
         ndnl.append(counter-1)
     elif line.count("LAYOUT")==1:
