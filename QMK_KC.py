@@ -98,6 +98,7 @@ REPLACEMENTS= [
     ("KC_INS,","  Ins ,"),
     ("KC_HOME,"," Home ,"),
     ("KC_PGUP,"," PgUp ,"),
+    ("KC_PGDN,"," PgDn ,"),
     ("KC_DELETE,","  Del ,"),
     ("KC_DEL,","  Del ,"),
     ("KC_END,","  End ,"),
@@ -105,7 +106,8 @@ REPLACEMENTS= [
     ("KC_RIGHT,"," Right,"),
     ("KC_RGHT,"," Right,"),
     ("KC_LEFT,"," Left ,"),
-    ("KC_UP,"," Left ,"),
+    ("KC_UP,","  Up  ,"),
+    ("KC_DOWN,"," Down ,"),
     ("KC_NUMLOCK,"," # Lk ,"),
     ("KC_NLCK,"," # Lk ,"),
     ("KC_KP_SLASH,","  /   ,"),
@@ -416,8 +418,11 @@ REPLACEMENTS= [
     ("SH_MON,","SH Mmt,"),
     ("SH_MOFF,","SH Mof,"),
     ("SH_TG,"," SH Tog,"),
-    ("SH_TT,"," SH TgM,")
+    ("SH_TT,"," SH TgM,"),
     #UNICODE NOT SUPPORTED
+    #SPECIAL
+    (",","|"),
+    ("REPLACE|",","),
 ]
 def repl(kmap):
     for rfrom, rto in REPLACEMENTS:
