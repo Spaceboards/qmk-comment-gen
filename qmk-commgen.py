@@ -1,45 +1,53 @@
 import QMK_KC
+#varibles
 comb=[]
-fill="-------"
-fill2="------+"
-yes=0
+fill="-------"  #top and bottom fill lines
+fill2="------+" #middle row fill lines
+Lstart=False    #has the program 
 layers=0
-kclay=[]
-kclns=[]
+KClayers=[]     #array of all KClines
+KClines=[]      #list if all KC on line
 nl="\n"
+#open keymap file
 inpt=open("keymap.c","r")
-allin=inpt.readlines()
-#add all lines of keymap to allin var
+inpList=inpt.readlines()
+#add all lines of keymap to allin var and close
 inpt.close()
 file=open("comment.txt","w+")
-
-for line in allin:
+for line in inpList:
+    #remove whitespace and new lines
     line=line.replace(" ","")
     line=line.replace("\n","")
-    if line.count(")")==1 and yes>0:
-        #if it is the end of a Map
-        yes=0
-        kclay.append(kclns)
-        kclns=[]
+    if line.count(")")==1 and line.count("(")==0 and Lstart==True:
+        #if it is the end of a layer
+        Lstart=False
+        #add layer to KClayers
+        KClayers.append(KClines)
+        KClines=[]
         layers+=1
-    elif yes>0:
+    elif Lstart==True:
         #if it part of keymap add it to KC lines
-        kclns.append(line)
+        KClines.append(line)
     elif line.count("LAYOUT")==1:
-        yes=1
+        Lstart=True
+assert len(KClayers)>0,"Error no keymap found"
+print("< Successfully imported layers! >")
 lyrcount=layers
-for layer in range(0,len(kclay)):
+for layer in range(0,len(KClayers)):
     lyrcount-=1
-    for num in range(0,len(kclay[layer])):
-        crtln=(kclay[layer][num])
+    for num in range(0,len(KClayers[layer])):
+        #define current layer
+        crtln=(KClayers[layer][num])
         if crtln.endswith(",")==False:
             crtln=crtln+","
         colm=crtln.count(',')
         crtln=" * ,"+crtln
+        #run it through my module see QMK_KC.py
         fixed=QMK_KC.repl(crtln)
         comb.append(fixed)
         lines=len(comb)
     file.write(nl)
+    #Output to comment.txt
     file.write("/*"+nl)
     colm2=colm-1
     file.write(" * ,------"+(fill*colm2)+"."+nl)
@@ -49,7 +57,8 @@ for layer in range(0,len(kclay)):
             file.write(" * |"+(fill2*colm2)+"------|"+nl)
     file.write(" * `------"+(fill*colm2)+"'"+nl)
     file.write(" */"+nl)
-    print("Layer "+str(layer+1)+" done!")
+    print("< Layer "+str(layer+1)+" done! >")
+    #empty the combined list
     comb=[]
-
 file.close()
+print("< Done printing Keymap! >")
