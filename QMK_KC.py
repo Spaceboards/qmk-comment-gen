@@ -421,8 +421,14 @@ REPLACEMENTS= [
     ("SH_TT,"," SH TgM,"),
     #UNICODE NOT SUPPORTED
     #SPECIAL
+    ("RAISE,"," Raise,"),
+    ("LOWER,"," Lower,"),
+    ("BACKLIT,"," Light,"),
+    #ENDING REPLACEMENTS
     (",","|"),
     ("REPLACE|",","),
+
+    
 ]
 def repl(kmap):
     for rfrom, rto in REPLACEMENTS:

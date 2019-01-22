@@ -1,4 +1,5 @@
 import QMK_KC
+import re
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 r=Tk()
@@ -12,6 +13,7 @@ layers=0
 KClayers=[]     #array of all KClines
 KClines=[]      #list if all KC on line
 nl="\n"
+Unk=0
 filename= askopenfilename()
 #ask if clipboard
 EnableClip=input("Enable Print to clipboard? y/n"+nl+">>> ")
@@ -27,9 +29,12 @@ inpList=inpt.readlines()
 inpt.close()
 file=open("comment.txt","w+")
 for line in inpList:
+    line=line.replace("\n","")
+    NewKC=re.search("^#define",line)
+    if NewKC:
+        Unk+=1
     #remove whitespace and new lines
     line=line.replace(" ","")
-    line=line.replace("\n","")
     if line.count(")")==1 and line.count("(")==0 and Lstart==True:
         #if it is the end of a layer
         Lstart=False
@@ -40,7 +45,7 @@ for line in inpList:
     elif Lstart==True:
         #if it part of keymap add it to KC lines
         KClines.append(line)
-    elif line.count("LAYOUT")==1:
+    elif re.search("LAYOUT",line):
         Lstart=True
 assert len(KClayers)>0,"+- No keymap Found -+"
 assert layers==len(KClayers),"+- Layer Error -+"
@@ -81,3 +86,4 @@ r.clipboard_append(clip)
 r.update()
 r.destroy()
 print("< Done printing Keymap! >")
+print("< "+str(Unk)+" Unknown keycode(s) >")
