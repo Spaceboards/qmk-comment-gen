@@ -388,8 +388,8 @@ REPLACEMENTS= [
     ("KC_ASTR,","  *   ,"),
     ("KC_LEFT_PAREN,","  (   ,"),
     ("KC_LPRN,","  (   ,"),
-    ("KC_RIGHT_PAREN,","  ),   ,"),
-    ("KC_RPRN,","  ),   ,"),
+    ("KC_RIGHT_PAREN,","  )   ,"),
+    ("KC_RPRN,","  )   ,"),
     ("KC_UNDERSCORE,","  _   ,"),
     ("KC_UNDS,","  _   ,"),
     ("KC_PLUS,","  +   ,"),
@@ -419,15 +419,57 @@ REPLACEMENTS= [
     ("SH_MOFF,","SH Mof,"),
     ("SH_TG,"," SH Tog,"),
     ("SH_TT,"," SH TgM,"),
+    #RGB Codes
+    ("RGB_TOG,","Ld Tog,"),
+    ("RGB_MODE_FORWARD,"," Ld M+,"),
+    ("RGB_MOD,"," Ld M+,"),
+    ("RGB_MODE_REVERSE,"," Ld M-,"),
+    ("RGB_RMOD,"," Ld M-,"),
+    ("RGB_HUI,"," Ld H+,"),
+    ("RGB_HUD,"," Ld H-,"),
+    ("RGB_SAI,"," Ld S+,"),
+    ("RGB_SAD,"," Ld S-,"),
+    ("RGB_VAI,"," Ld V+,"),
+    ("RGB_VAD,"," Ld V-,"),
+    ("RGB_SPI,","Ld Sp+,"),
+    ("RGB_SPD,","Ld Sp-,"),
+    ("RGB_MODE_PLAIN,"," Ld St,"),
+    ("RGB_M_P,"," Ld St,"),
+    ("RGB_MODE_BREATHE,"," Ld Br,"),
+    ("RGB_M_B,"," Ld Br,"),
+    ("RGB_MODE_RAINBOW,"," Ld Rb,"),
+    ("RGB_M_R,"," Ld Rb,"),
+    ("RGB_MODE_SWIRL,"," Ld Sw,"),
+    ("RGB_M_SW,"," Ld Sw,"),
+    ("RGB_MODE_SHAKE,"," Ld Sh,"),
+    ("RGB_M_SH,"," Ld Sh,"),
+    ("RGB_MODE_KNIGHT,","Ld Kn,"),
+    ("RGB_M_K,"," Ld Kn,"),
+    ("RGB_MODE_XMAS,"," Ld Xm,"),
+    ("RGB_M_X,"," Ld Xm,"),
+    ("RGB_MODE_GRADIENT,"," Ld Gd,"),
+    ("RGB_M_G,"," Ld Gd,"),
+    ("RGB_MODE_RGBTEST,"," Ld Ts,"),
+    ("RGB_M_T,"," Ld Ts,"),
     #UNICODE NOT SUPPORTED
     #SPECIAL
     ("RAISE,"," Raise,"),
     ("LOWER,"," Lower,"),
     ("BACKLIT,"," Light,"),
+    #THERMAL PRINTER
+    ("PRINT_ON,"," PrtOn,"),
+    ("PRINT_OFF,","PrtOff,"),
+    #PLOVER
+    ("EXT_PLV,"," Exit ,"),
+    #UNICODE TEMP SOLUTION
+    ("UC(",""),
+    #NONUS HASH AND SLASH
+    ("S(KC_NUHS),","ISO # ,"),
+    ("S(KC_NUBS),","ISO / ,"),
     #ENDING REPLACEMENTS
+    ("),",","),
     (",","|"),
     ("REPLACE|",","),
-
     
 ]
 def repl(kmap):
