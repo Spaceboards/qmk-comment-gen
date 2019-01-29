@@ -1,12 +1,15 @@
 import QMK_KC
-#varibles
-comb=[]
-fill="-------"  #top and bottom fill lines
-fill2="------+" #middle row fill lines
-Lstart=False    #has the program 
-layers=0
-KClayers=[]     #array of all KClines
-KClines=[]      #list if all KC on line
+import re
+from tkinter import Tk
+r=Tk()
+r.withdraw()
+comb=[]             #combined layer ready for output
+fill="-------"      #top and bottom fill lines
+fill2="------+"     #middle row fill lines
+laystart=False      #has the program found a layer start
+layers=0            #how many layers
+KClayers=[]         #array of all KClines
+KClines=[]          #list if all KC on line
 nl="\n"
 #open keymap file
 inpt=open("keymap.c","r")
@@ -15,23 +18,24 @@ inpList=inpt.readlines()
 inpt.close()
 file=open("comment.txt","w+")
 for line in inpList:
+    line=line.replace("\n","")
     #remove whitespace and new lines
     line=line.replace(" ","")
-    line=line.replace("\n","")
-    if line.count(")")==1 and line.count("(")==0 and Lstart==True:
+    if line.count(")")==1 and line.count("(")==0 and laystart==True:
         #if it is the end of a layer
-        Lstart=False
+        laystart=False
         #add layer to KClayers
         KClayers.append(KClines)
         KClines=[]
         layers+=1
-    elif Lstart==True:
+    elif laystart==True:
         #if it part of keymap add it to KC lines
         KClines.append(line)
-    elif line.count("LAYOUT")==1:
-        Lstart=True
-assert len(KClayers)>0,"Error no keymap found"
-print("< Successfully imported layers! >")
+    elif re.search("LAYOUT",line):
+        laystart=True
+assert len(KClayers)>0,"+- No keymap Found -+"
+assert layers==len(KClayers),"+- Layer Error -+"
+print("Successfully imported layers")
 lyrcount=layers
 for layer in range(0,len(KClayers)):
     lyrcount-=1
@@ -57,8 +61,17 @@ for layer in range(0,len(KClayers)):
             file.write(" * |"+(fill2*colm2)+"------|"+nl)
     file.write(" * `------"+(fill*colm2)+"'"+nl)
     file.write(" */"+nl)
-    print("< Layer "+str(layer+1)+" done! >")
+    print("Layer "+str(layer+1)+" done")
     #empty the combined list
     comb=[]
 file.close()
-print("< Done printing Keymap! >")
+#ask if clipboard
+if QMK_KC.yesno("Enable paste to Clipboard")==True:
+    opclp=open("comment.txt","r")
+    clip=opclp.read()    
+    r.clipboard_clear()
+    r.clipboard_append(clip)
+    r.update()
+    r.destroy()
+    print("Added to Clipboard")
+print("Done printing Keymap")

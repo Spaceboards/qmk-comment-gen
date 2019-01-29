@@ -476,3 +476,11 @@ def repl(kmap):
     for rfrom, rto in REPLACEMENTS:
         kmap = kmap.replace(rfrom, rto)
     return kmap 
+def yesno(ask):
+    var=input(ask+"? y/n \n>>>").lower()
+    var=var.replace(" ","")
+    if var[:1]=="y":
+        yn=True
+    else:
+        yn=False
+    return yn
