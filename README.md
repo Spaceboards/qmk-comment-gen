@@ -8,8 +8,7 @@ Generates fancy layout comments for qmk keymaps
 
 ## What's new?
 + added support for multiple layers
-+ now uses keymap.c directly
-+ Added a gui version
++ Better boxes
 
-## Example
+## Example (outdated)
 ![Example](https://i.imgur.com/miEKiYT.gif)
