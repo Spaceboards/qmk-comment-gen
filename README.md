@@ -9,6 +9,7 @@ Generates fancy layout comments for qmk keymaps
 ## What's new?
 + added support for multiple layers
 + Better boxes
++ Clipboard support
 
 ## Example (outdated)
 ![Example](https://i.imgur.com/miEKiYT.gif)
