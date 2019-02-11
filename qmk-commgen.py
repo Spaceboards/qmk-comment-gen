@@ -4,9 +4,9 @@ from tkinter import Tk
 r=Tk()
 r.withdraw()
 comb=[]             #combined layer ready for output
-fill='──────┬'      #top and bottom fill lines
-fill2='──────┼'
-fill3='──────┴'     #middle row fill lines
+fill='──────┬'      #top fill lines 
+fill2='──────┼'     #middle row fill lines
+fill3='──────┴'     #bottom fill lines
 laystart=False      #has the program found a layer start
 layers=0            #how many layers
 KClayers=[]         #array of all KClines
@@ -24,7 +24,7 @@ for line in inpList:
     line=line.replace('\\','')
     #remove whitespace and new lines
     line=line.replace(' ','')
-    if line.count(')')==1 and line.count('(')==0 and laystart==True:
+    if line.count(')')==1 and line.count('(')==0 and laystart==True or line=='' and laystart==True:
         #if it is the end of a layer
         laystart=False
         #add layer to KClayers
