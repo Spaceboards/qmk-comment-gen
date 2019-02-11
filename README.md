@@ -11,5 +11,5 @@ Generates fancy layout comments for qmk keymaps
 + Better boxes
 + Clipboard support
 
-## Example (outdated)
-![Example](https://i.imgur.com/miEKiYT.gif)
+## Example (updated)
+![Example](https://i.imgur.com/DtWHOUD.gif)
