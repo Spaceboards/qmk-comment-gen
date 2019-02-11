@@ -466,11 +466,14 @@ keycodes={
     #NONUS HASH AND SLASH
     "S(KC_NUHS),":"ISO # ,",
     "S(KC_NUBS),":"ISO / ,",
+    "KC_CTCP,":"Ctr/Cp,",
+    "KC_RSSH,":"Shf / ",
     #ENDING REPLACEMENTS
     ",":",",
     ",":"│",
     "REPLACE│":",",
     "Space │Space │":"    Space    │",
+    #mechmerlin KCs
     
 }
 def replkc(line):
