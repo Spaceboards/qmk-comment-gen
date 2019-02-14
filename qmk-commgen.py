@@ -13,6 +13,8 @@ KClayers=[]         #array of all KClines
 KClines=[]          #list if all KC on line
 nl='\n'
 width=[]
+names=[]
+layname=""
 #open keymap file
 inpt=open('keymap.c','r')
 inpList=inpt.readlines()
@@ -36,6 +38,10 @@ for line in inpList:
         KClines.append(line)
     elif re.search('LAYOUT',line):
         laystart=True
+        fnd = re.search('\[(.+?)\]',line)
+        if fnd:
+            layname=fnd.group(1).replace("_","")
+            names.append(layname)
 assert len(KClayers)>0,'+- No keymap Found -+'
 assert layers==len(KClayers),'+- Layer Error -+'
 print('Successfully imported layers')
@@ -57,7 +63,7 @@ for layer in range(0,len(KClayers)):
         lines=len(comb)
     file.write(nl)
     #Output to comment.txt
-    file.write('/*'+nl)
+    print(f'/* {names[layer]}',file=file)
     print(f' * ┌{fill*width[0]}──────┐', file=file)
     for num in range(0,lines):
         file.write(comb[num]+nl)
@@ -78,4 +84,5 @@ if qmk_kc.yesno('Enable paste to Clipboard')==True:
     r.update()
     r.destroy()
     print('Added to Clipboard')
+print(names)
 print('Done printing Keymap')
