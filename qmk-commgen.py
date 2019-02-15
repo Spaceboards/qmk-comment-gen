@@ -84,5 +84,4 @@ if qmk_kc.yesno('Enable paste to Clipboard')==True:
     r.update()
     r.destroy()
     print('Added to Clipboard')
-print(names)
 print('Done printing Keymap')
