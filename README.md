@@ -1,5 +1,6 @@
 # qmk-comment-gen
 Generates fancy layout comments for qmk keymaps 
+REQUIRES PYTHON 3.6+
 
 ## How to use qmk-commgen.py
 + put keymap.c in the same folder as the .py 
