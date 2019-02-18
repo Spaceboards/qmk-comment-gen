@@ -320,6 +320,10 @@ keycodes={
     "MU_OFF,":"Mu Off,",
     "MU_TOG,":"Mu Tog,",
     "MU_MOD,":"Mu Mod,",
+    "MI_ON,":"Mi On ,",
+    "MI_OFF,":"Mi Off,",
+    "MUV_DE,":"Voice-,",
+    "MUV_IN,":"Voice+,",
     #BACKLIGHTING
     "BL_TOGG,":"BL Tog,",
     "BL_STEP,":"BL Stp,",
@@ -451,34 +455,51 @@ keycodes={
     "RGB_M_G,":" Ld Gd,",
     "RGB_MODE_RGBTEST,":" Ld Ts,",
     "RGB_M_T,":" Ld Ts,",
-    #UNICODE NOT SUPPORTED
     #SPECIAL
-    "RAISE,":" Raise,",
-    "LOWER,":" Lower,",
     "BACKLIT,":" Light,",
+    "MO(":"",
+    "RAISE,":"Raise ,",
+    "LOWER,":"Lower ,",
     #THERMAL PRINTER
     "PRINT_ON,":" PrtOn,",
     "PRINT_OFF,":"PrtOff,",
     #PLOVER
     "EXT_PLV,":" Exit ,",
+    #BOOTMAGIC?
+    "AG_NORM,":"AG Nrm,",
+    "AG_SWAP,":"AG Swp,",
+    "TERM_ON,":"TermOn,",
+    "TERM_OFF,":"TermOf,",
     #UNICODE TEMP SOLUTION
     "UC":"",
+    #common layers
+    "QWERTY,":"Qwerty,",
+    "COLEMAK,":"Colmak,",
+    "DVORAK,":"Dvorak,",
+    "PLOVER,":"Plover,",
     #NONUS HASH AND SLASH
     "S(KC_NUHS),":"ISO # ,",
     "S(KC_NUBS),":"ISO / ,",
     "KC_CTCP,":"Ctr/Cp,",
     "KC_RSSH,":"Shf / ",
     #ENDING REPLACEMENTS
+    "),":",",
     ",":",",
     ",":"│",
     "REPLACE│":",",
     "Space │Space │":"    Space    │",
-    #mechmerlin KCs
+    "_":" ",
+        
     
 }
-def replkc(line):
+def replkc(line,others):
     for rfrom, rto in keycodes.items():
         line=line.replace(rfrom, rto)
+    if not others==[]:
+        for defin in others:
+            defin=defin.replace("#define ","")
+            newdef=defin.split()
+            line=line.replace(newdef[0],newdef[1])
     return line 
 def yesno(ask):
     var=input(ask+"? y/n \n>>>").lower()

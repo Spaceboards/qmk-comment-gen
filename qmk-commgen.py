@@ -15,6 +15,8 @@ nl='\n'
 width=[]
 names=[]
 layname=""
+notdef=[]
+ends=['','}']
 #open keymap file
 inpt=open('keymap.c','r')
 inpList=inpt.readlines()
@@ -24,9 +26,16 @@ file=open('comment.txt','w+',encoding='utf-8')
 for line in inpList:
     line=line.replace('\n','')
     line=line.replace('\\','')
+    for possible in ends:
+        if line==possible:
+            end=True
+        else:
+            end=False
+    if line.count('#define '):
+        notdef.append(line)
     #remove whitespace and new lines
     line=line.replace(' ','')
-    if line.count(')')==1 and line.count('(')==0 and laystart==True or line=='' and laystart==True:
+    if line.count(')')==1 and line.count('(')==0 and laystart==True or end==True and laystart==True:
         #if it is the end of a layer
         laystart=False
         #add layer to KClayers
@@ -36,7 +45,7 @@ for line in inpList:
     elif laystart==True:
         #if it part of keymap add it to KC lines
         KClines.append(line)
-    elif re.search('LAYOUT',line):
+    if re.search('LAYOUT',line):
         laystart=True
         fnd = re.search('\[(.+?)\]',line)
         if fnd:
@@ -58,7 +67,7 @@ for layer in range(0,len(KClayers)):
         width.append(colm2)
         crtln=' * ,'+crtln
         #run it through my module see qmk_kc.py
-        fixed=qmk_kc.replkc(crtln)
+        fixed=qmk_kc.replkc(crtln,notdef)
         comb.append(fixed)
         lines=len(comb)
     file.write(nl)
