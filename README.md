@@ -1,6 +1,5 @@
 # qmk-comment-gen
 Generates fancy layout comments for qmk keymaps
-https://github.com/SeungheonOh/QMK_KeymapToAsciiTable Is a much better version 
 ## Requirements
 + Python 3.6+
 + Keymap start on a new line example:
