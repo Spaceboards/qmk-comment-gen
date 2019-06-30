@@ -457,9 +457,10 @@ keycodes={
     "RGB_M_T,":" Ld Ts,",
     #SPECIAL
     "BACKLIT,":" Light,",
-    "MO(":"",
-    "RAISE,":"Raise ,",
-    "LOWER,":"Lower ,",
+    "MO(_":" ",
+    "MO(":" ",
+    "RAISE":"Raise",
+    "LOWER":"Lower",
     #THERMAL PRINTER
     "PRINT_ON,":" PrtOn,",
     "PRINT_OFF,":"PrtOff,",
@@ -493,16 +494,16 @@ keycodes={
     
 }
 def replkc(line,others):
-    for rfrom, rto in keycodes.items():
-        line=line.replace(rfrom, rto)
     if not others==[]:
         for defin in others:
             defin=defin.replace("#define ","")
             newdef=defin.split()
             line=line.replace(newdef[0],newdef[1])
+    for rfrom, rto in keycodes.items():
+        line=line.replace(rfrom, rto)
     return line 
 def yesno(ask):
-    var=input(ask+"? y/n \n>>>").lower()
+    var=input(ask+"? y/n >>> ").lower()
     var=var.replace(" ","")
     if var[:1]=="y":
         yn=True
