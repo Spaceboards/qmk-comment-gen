@@ -1,0 +1,5 @@
+# Default output file
+comment.txt
+
+# Python byte code
+*.pyc
