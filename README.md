@@ -22,5 +22,8 @@ KC_NO, etc...
 
 ## Example
 ```
+# Generate comments for the default planck keymap
 python3 gen.py ../qmk_firmware/keyboards/planck/keymaps/default/
+# Change the output file to planck.txt
+python3 gen.py ../qmk_firmware/keyboards/planck/keymaps/default/ -o planck.txt
 ```
