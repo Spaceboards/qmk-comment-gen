@@ -9,6 +9,7 @@ if __name__ == "__main__":
     parser.add_argument('-i','--keymap-path', type=str, default='./', help='Path to keymap.c')
     parser.add_argument('-o', '--output-file', type=str, default='comment.txt', help='Comment file that is used to store keymap comments')
     parser.add_argument('--clipboard', action="store_true", help='Paste keymap to clipboard')
+    parser.set_defaults(clipboard=False)
 
     args = parser.parse_args()
 

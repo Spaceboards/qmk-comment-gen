@@ -2,9 +2,10 @@ import re
 from pathlib import Path
 
 try:
-    from tkinter import Tk
+    import pyperclip
 except ImportError:
-    Tk = None
+    pyperclip = None
+
 
 from . import keymap
 
@@ -25,17 +26,14 @@ def paste_to_clipboard(output_file_path: Path):
     Paste to Clipboard
     :param output_file_path: Output file that contains comments text
     """
-    if Tk is None:
-        print("Dependency tkinter is not installed and is required to paste to clipboard.")
+    if pyperclip is None:
+
+        print("Dependency pyperclip is not installed and is required to paste to clipboard.")
+
         exit(1)
     with output_file_path.open('r') as opclp:
         clip=opclp.read()   
-    r=Tk()
-    r.withdraw() 
-    r.clipboard_clear()
-    r.clipboard_append(clip)
-    r.update()
-    r.destroy()
+    pyperclip.copy(clip)
 
 
 def gen_comment(keymap_path: Path, output_file_path: Path):
