@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    keymap_path = Path(args.keymappath, 'keymap.c')
+    keymap_path = Path(args.keymap_path, 'keymap.c')
     if not keymap_path.exists():
         print(f"Keymap path does not exist or is not readable ({keymap_path})")
         exit(1)
