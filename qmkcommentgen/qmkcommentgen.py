@@ -31,7 +31,8 @@ def paste_to_clipboard(output_file_path: Path):
         print("Dependency pyperclip is not installed and is required to paste to clipboard.")
 
         exit(1)
-    with output_file_path.open('r') as opclp:
+    with output_file_path.open('r', encoding='utf-8') as opclp:
+
         clip=opclp.read()   
     pyperclip.copy(clip)
 
