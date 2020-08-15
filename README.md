@@ -1,17 +1,18 @@
 # qmk-comment-gen
 Generates fancy layout comments for qmk keymaps
+
 ## Requirements
 + Python 3.6+
-+ Keymap start on a new line example:
++ Keymap starts on a new line. Example:
 
 ```
 [_HOME] = LAYOUT(
 
 KC_NO, etc...
 ```
-## How to use qmk-commgen.py
-+ put keymap.c in the same folder as the .py 
-+ run qmk-commgen.py 
+
+## How to use
++ run gen.py
 + open comment.txt
 
 ## What's new?
@@ -19,5 +20,10 @@ KC_NO, etc...
 + Better boxes
 + Clipboard support
 
-## Example (updated)
-![Example](https://i.imgur.com/DtWHOUD.gif)
+## Example
+```
+# Generate comments for the default planck keymap
+python3 gen.py -i ../qmk_firmware/keyboards/planck/keymaps/default/
+# Change the output file to planck.txt
+python3 gen.py -i ../qmk_firmware/keyboards/planck/keymaps/default/ -o planck.txt
+```

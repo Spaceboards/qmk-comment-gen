@@ -1,0 +1,1 @@
+from .qmkcommentgen import gen_comment, paste_to_clipboard

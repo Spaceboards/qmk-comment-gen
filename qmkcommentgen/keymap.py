@@ -489,23 +489,4 @@ keycodes={
     "REPLACE│":",",
     "Space │Space │":"    Space    │",
     "_":" ",
-        
-    
 }
-def replkc(line,others):
-    for rfrom, rto in keycodes.items():
-        line=line.replace(rfrom, rto)
-    if not others==[]:
-        for defin in others:
-            defin=defin.replace("#define ","")
-            newdef=defin.split()
-            line=line.replace(newdef[0],newdef[1])
-    return line 
-def yesno(ask):
-    var=input(ask+"? y/n \n>>>").lower()
-    var=var.replace(" ","")
-    if var[:1]=="y":
-        yn=True
-    else:
-        yn=False
-    return yn
