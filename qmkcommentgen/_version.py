@@ -1,0 +1,8 @@
+__author__ = "Spaceboards"
+__author_email__ = "email@domain.tld"
+__description__ = "Generates fancy layout comments for qmk keymaps"
+__license__ = "GNU 3.0"
+__status__ = "Development"
+__title__ = "qmk-comment-gen"
+__url__ = "https://github.com/Spaceboards/qmk-comment-gen"
+__version__ = "0.0.1-0"
