@@ -1,3 +1,9 @@
+# virtual python environment
+.venv
+
+# pypi stuff
+build
+
 # Output txt files
 *.txt
 
