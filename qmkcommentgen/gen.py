@@ -1,10 +1,10 @@
 from argparse import ArgumentParser
 from pathlib import Path
 
-import qmkcommentgen
+from .qmkcommentgen import gen_comment, paste_to_clipboard
 
 
-if __name__ == "__main__":
+def main():
     parser = ArgumentParser(description='Generate QMK firmware keymap comments')
     parser.add_argument('-i','--keymap-path', type=str, default='./', help='Path to keymap.c')
     parser.add_argument('-o', '--output-file', type=str, default='comment.txt', help='Comment file that is used to store keymap comments')
@@ -22,9 +22,9 @@ if __name__ == "__main__":
         exit(1)
     
     output_file = Path(args.output_file)
-    qmkcommentgen.gen_comment(keymap_path, output_file)
+    gen_comment(keymap_path, output_file)
     print(f'Done printing Keymap to: {output_file}')
 
     if args.clipboard:
-        qmkcommentgen.paste_to_clipboard(output_file)
+        paste_to_clipboard(output_file)
         print('Added to Clipboard')
