@@ -12,8 +12,23 @@ KC_NO, etc...
 ```
 
 ## How to use
-+ run gen.py
-+ open comment.txt
+### No install
+```
+git clone https://github.com/Spaceboards/qmk-comment-gen.git
+cp /path/to/keymap.c qmk-comment-gen/keymap.c
+./gen.py
+```
+The file `comment.txt` will be created with the generated comment
+### Install with pip from source
+```
+git clone https://github.com/Spaceboards/qmk-comment-gen.git
+cd qmk-comment-gen
+pip install -U .
+```
+Then from anywhere
+```
+qgen -i ~/bin/qmk_firmware/keyboards/planck/keymaps/default/ -o planck_keymap_comment.txt
+```
 
 ## What's new?
 + added support for multiple layers
