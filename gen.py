@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from .qmkcommentgen import gen
+from qmkcommentgen import gen
 import sys
 
 if __name__ == "__main__":
